@@ -26,9 +26,9 @@ Installation and configuration of print server on Raspberry Pi with printer mana
  
 # Connect printer
 
-Beacuse of LPT printer, let's see [pi-parport](https://github.com/worlickwerx/pi-parport) repository. First you have to build hardware
+Beacuse of LPT printer, let's see [pi-parport](https://github.com/tatry/pi-parport) repository. First you have to build hardware
 (latest version) and test it for shorcircuits. Next make it HAT by writing right values to EEPROM memory using
-[instruction](https://github.com/worlickwerx/pi-parport/tree/master/eeprom). After that follow [README.md](https://github.com/worlickwerx/pi-parport/blob/master/README.md)
+[instruction](https://github.com/tatry/pi-parport/tree/master/eeprom). After that follow [README.md](https://github.com/tatry/pi-parport/blob/master/README.md)
 to install drivers and DTO.
 
 After reboot `lp` and `ppdev` were automatically loaded.
