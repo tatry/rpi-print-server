@@ -1,0 +1,14 @@
+[Unit]
+Description=Clean-up print server after start-up
+After=cups.service
+Before=printer_power_manager.service
+Requires=cups.service
+
+[Service]
+ExecStart=/usr/local/bin/printer_startup_cleanup_after_server.sh
+Type=oneshot
+Restart=no
+
+[Install]
+WantedBy=printer.target
+

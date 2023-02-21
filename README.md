@@ -22,7 +22,12 @@ Installation and configuration of print server on Raspberry Pi with printer mana
    sudo apt upgrade
    sudo reboot
    ```
-7. Configure static IP address on DHCP server.
+7. Block updates of kernel:
+   ```shell
+   sudo apt-mark hold libraspberrypi-bin libraspberrypi-dev libraspberrypi-doc libraspberrypi0
+   sudo apt-mark hold raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
+   ```
+8. Configure static IP address on DHCP server.
  
 # Connect printer
 
@@ -77,3 +82,9 @@ Install dependencies:
 sudo pip3 install --system pycups-notify
 sudo pip3 install --system tinytuya
 ```
+
+Now edit scripts with correct credencials for tuya devices and install them:
+```shell
+sudo ./install.sh
+```
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Printer power manager
+After=cups.service
+Requires=cups.service
+
+[Service]
+ExecStart=/usr/local/bin/printer_power_manager.py
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=printer.target
+
