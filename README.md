@@ -22,12 +22,16 @@ Installation and configuration of print server on Raspberry Pi with printer mana
    sudo apt upgrade
    sudo reboot
    ```
-7. Block updates of kernel:
+7. Install necessary packages:
+   ```shell
+   sudo apt install git raspberrypi-kernel-headers
+   ```
+8. Block updates of kernel:
    ```shell
    sudo apt-mark hold libraspberrypi-bin libraspberrypi-dev libraspberrypi-doc libraspberrypi0
    sudo apt-mark hold raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
    ```
-8. Configure static IP address on DHCP server.
+9. Configure static IP address on DHCP server.
  
 # Connect printer
 
