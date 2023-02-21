@@ -24,7 +24,7 @@ Installation and configuration of print server on Raspberry Pi with printer mana
    ```
 7. Install necessary packages:
    ```shell
-   sudo apt install git raspberrypi-kernel-headers
+   sudo apt install git raspberrypi-kernel-headers python3-pip
    ```
 8. Block updates of kernel:
    ```shell
