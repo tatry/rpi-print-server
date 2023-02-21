@@ -33,12 +33,18 @@ Installation and configuration of print server on Raspberry Pi with printer mana
 
 Beacuse of LPT printer, let's see [pi-parport](https://github.com/tatry/pi-parport) repository. First you have to build hardware
 (latest version) and test it for shorcircuits. Next make it HAT by writing right values to EEPROM memory using
-[instruction](https://github.com/tatry/pi-parport/tree/master/eeprom). After that follow [README.md](https://github.com/tatry/pi-parport/blob/master/README.md)
-to install drivers and DTO.
+[instruction](https://github.com/tatry/pi-parport/tree/master/eeprom).
+
+Next follow [README.md](https://github.com/tatry/pi-parport/blob/master/README.md) to install drivers and DTO.
+
+Add `ppdev` and `lp` modules to `/etc/modules` to expose LPT port to user space.
 
 After reboot `lp` and `ppdev` were automatically loaded.
 
 # CUPS configuration
+
+Install cups if not already installed: `sudo apt install cups hplip`.
+Also add user to `lpadmin` group: `sudo usermod -aG lpadmin printer`
 
 1. Edit CUPS configuration file `/etc/cups/cupsd.conf` to allow remote access and administration. Important fragments of the file should look like this:
    ```
