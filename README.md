@@ -24,7 +24,7 @@ Installation and configuration of print server on Raspberry Pi with printer mana
    ```
 7. Install necessary packages:
    ```shell
-   sudo apt install git raspberrypi-kernel-headers python3-pip
+   sudo apt install git raspberrypi-kernel-headers python3-pip libcups2-dev 
    ```
 8. Block updates of kernel:
    ```shell
@@ -91,6 +91,7 @@ Install dependencies:
 ```shell
 sudo pip3 install --system pycups-notify
 sudo pip3 install --system tinytuya
+sudo pip3 cache purge
 ```
 
 Now edit scripts with correct credencials for tuya devices and install them:
