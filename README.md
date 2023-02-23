@@ -2,6 +2,12 @@
 
 Installation and configuration of print server on Raspberry Pi with printer manager (power on/off). An old printer on LPT port is assumed.
 
+Adjust configuration in files:
+- `srv/printer_power_manager.py`
+- `srv/cupsd.conf`
+- `install.sh`
+and then follow procesure below or just call `sudo install.sh` after paragraph 4 in section System installation.
+
 # System installation
 
 1. Write Raspberry Pi OS on a SD card (e.g. using Raspberry Pi Imager)
