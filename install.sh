@@ -10,6 +10,8 @@ set -x
 USER=printer
 THIS_REPO=`pwd`
 DRIVER_REPO="/opt/pi-parport"
+# For available locales see file /usr/share/i18n/SUPPORTED
+LOCALE="pl_PL.UTF-8"
 
 #
 # Update system
@@ -22,8 +24,6 @@ apt -y upgrade
 # Configure system
 #
 
-# For available locales see file /usr/share/i18n/SUPPORTED
-LOCALE="pl_PL.UTF-8"
 echo "$LOCALE" >> /etc/locale.gen
 locale-gen
 localectl set-locale LANG="$LOCALE"
@@ -45,7 +45,8 @@ apt install -y \
                python3-pip \
                libcups2-dev \
                cups \
-               hplip
+               hplip \
+               dkms
 
 pip3 install --system \
                       pycups-notify \
@@ -69,17 +70,8 @@ apt-mark hold raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-heade
 
 git clone https://github.com/tatry/pi-parport "$DRIVER_REPO"
 
-cd "$DRIVER_REPO/driver"
-make -j4
-make install
-
-cd "$DRIVER_REPO/dts"
-make
-make install
-
-# force user space files
-echo "ppdev" >> /etc/modules
-echo "lp" >> /etc/modules
+cd "$DRIVER_REPO"
+./install.sh
 
 #
 # Configure CUPS

@@ -6,7 +6,8 @@ Adjust configuration in files:
 - `srv/printer_power_manager.py`
 - `srv/cupsd.conf`
 - `install.sh`
-and then follow procesure below or just call `sudo install.sh` after paragraph 4 in section System installation.
+
+and then follow procesure below or just call `sudo ./install.sh` after paragraph 4 in section System installation.
 
 # System installation
 
