@@ -24,7 +24,7 @@ apt -y upgrade
 # Configure system
 #
 
-echo "$LOCALE" >> /etc/locale.gen
+sed -i "/$LOCALE/s/^# //" /etc/locale.gen
 locale-gen
 localectl set-locale LANG="$LOCALE"
 
@@ -52,17 +52,15 @@ pip3 install --system \
                       pycups-notify \
                       tinytuya
 
-pip3 cache purge
+apt -y autoremove
 apt clean
+pip3 cache purge
 
 #
 # Configure dependencies
 #
 
 usermod -aG lpadmin "$USER"
-
-apt-mark hold libraspberrypi-bin libraspberrypi-dev libraspberrypi-doc libraspberrypi0
-apt-mark hold raspberrypi-bootloader raspberrypi-kernel raspberrypi-kernel-headers
 
 #
 # Install LPT drivers
