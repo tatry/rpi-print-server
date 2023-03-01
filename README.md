@@ -92,17 +92,30 @@ Also add user to `lpadmin` group: `sudo usermod -aG lpadmin printer`
 
 # Install and configure printer managers
 
-Tuya socket is used to automatically power on printer when created a new job and power it off after some time.
+Printer power is enabled/disabled by GPIO pin, an external device is required with relay.
+
+Printer is automatically power on when created a new job and power it off after some time.
 
 Install dependencies:
 ```shell
 sudo pip3 install --system pycups-notify
-sudo pip3 install --system tinytuya
 sudo pip3 cache purge
 ```
 
-Now edit scripts with correct credencials for tuya devices and install them:
+Now edit scripts with correct GPIO pin. Then install management scripts:
 ```shell
-sudo ./install.sh
+install srv/printer_power_manager.py /usr/local/bin/
+install srv/printer_startup_cleanup_after_server.sh /usr/local/bin/
+
+install --mode=644 srv/printer_power_manager.service /etc/systemd/system/
+install --mode=644 srv/printer_startup_cleanup_after_server.service /etc/systemd/system/
+
+systemctl daemon-reload
+
+systemctl enable printer_power_manager.service
+systemctl start printer_power_manager.service
+
+systemctl enable printer_startup_cleanup_after_server.service
+systemctl start printer_startup_cleanup_after_server.service
 ```
 

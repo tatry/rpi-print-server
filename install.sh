@@ -48,9 +48,7 @@ apt install -y \
                hplip \
                dkms
 
-pip3 install --system \
-                      pycups-notify \
-                      tinytuya
+pip3 install --system pycups-notify
 
 apt -y autoremove
 apt clean
