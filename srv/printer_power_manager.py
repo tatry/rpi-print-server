@@ -51,7 +51,7 @@ def timer_start():
 def cups_handler(evt):
     title_split = evt.title.split()
     description_split = evt.description.split()
-    if title_split[-1] == "pending" and evt.description == "Job created.":
+    if evt.description == "Job created.":
         timer_stop()
         printer_power_on()
     elif title_split[-1] == "idle" and " ".join(description_split[-4:]) == "state changed to idle.":
