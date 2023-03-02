@@ -10,6 +10,7 @@ set -x
 USER=printer
 THIS_REPO=`pwd`
 DRIVER_REPO="/opt/pi-parport"
+PYCUPS_NOTIFY_REPO="/opt/pycups-notify"
 # For available locales see file /usr/share/i18n/SUPPORTED
 LOCALE="pl_PL.UTF-8"
 
@@ -48,8 +49,6 @@ apt install -y \
                hplip \
                dkms
 
-pip3 install --system pycups-notify
-
 apt -y autoremove
 apt clean
 pip3 cache purge
@@ -59,6 +58,15 @@ pip3 cache purge
 #
 
 usermod -aG lpadmin "$USER"
+
+#
+# Install pycups-notify from source
+#
+
+git clone https://github.com/anxuae/pycups-notify "$PYCUPS_NOTIFY_REPO"
+cd "$PYCUPS_NOTIFY_REPO"
+git checkout 4f507cccdfb7e2f8b622425eba10ba6f9248514a
+python setup.py install
 
 #
 # Install LPT drivers
